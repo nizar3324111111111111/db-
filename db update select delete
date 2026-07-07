@@ -1,0 +1,44 @@
+create database PAVI;
+use PAVI;
+create table batch1(id int, name varchar(10),dept varchar(4));
+insert into batch1 values (100, "kavin","cse");
+insert into batch1 values (101, "vams","cse");
+insert into batch1 values (101, "jousha","ece");
+desc batch1;
+select * from batch1;
+set sql_safe_updates =0;
+
+update batch1 set id =102 where dept="ece";
+update batch1 set dept="eee" where dept="cse";
+
+update batch1 set dept= if(id=101,"eee","cse");
+
+alter table batch1 add column mark int(20);
+update batch1 set mark= if(dept="cse",100,80);
+update batch1 set mark=30 where name like"k%"; 
+
+select * from batch1;
+select * from batch1 order by mark;
+select * from batch1 order by mark desc;
+select id,name from batch1 order by mark;
+select count(*) from batch1;
+
+select dept,count(*) from batch1 group by dept;
+
+select * from batch1 where dept="cse";
+
+select * from batch1 where id>100 and id<102;
+
+select *,case
+when mark>50 then "pass"
+when mark>70 then "distinction"
+else "fail" 
+end as grade from batch1;
+select avg(mark) from batch1;
+
+delete from batch1 where dept="eee";
+select * from batch1;
+
+delete from batch1 where name like "k%";
+
+delete from batch1;
