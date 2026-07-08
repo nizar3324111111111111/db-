@@ -1,0 +1,16 @@
+create database india;
+use india;
+create table stu1(id int,name varchar(20), marks int);
+create table stu2(id int,dept varchar(20), age int);
+insert into stu1 values(1,"saran",66);
+insert into stu1 values(2,"sarathi",55);
+insert into stu1 values(3,"kavin",77);
+insert into stu2 values(1,"cse",20);
+insert into stu2 values(4,"cse",21);
+insert into stu2 values(5,"it",19);
+select a.id,a.name,a.marks,b.dept,b.age from stu1 a inner join stu2 b on a.id=b.id;
+select a.id,a.name,a.marks,b.dept,b.age from stu1 a left join stu2 b on a.id=b.id;
+select b.id,a.name,a.marks,b.dept,b.age from stu1 a right join stu2 b on a.id=b.id;
+select a.id,a.name,a.marks,b.dept,b.age from stu1 a left join stu2 b on a.id=b.id 
+union 
+select b.id,a.name,a.marks,b.dept,b.age from stu1 a right join stu2 b on a.id=b.id;
